@@ -70,7 +70,7 @@ Page({
       setTimeout(() => {
         this.setData({
           tabList,
-          imgSrcs: swiper,
+          imgSrcs: swiper.map(el => el.img),
           pageLoading: false
         });
         this.loadGoodsList(true);
@@ -106,6 +106,7 @@ Page({
 
     try {
       const nextList = await fetchGoodsList(pageIndex, pageSize);
+      console.log(nextList, 1111);
       this.setData({
         goodsList: fresh ? nextList : this.data.goodsList.concat(nextList),
         goodsListLoadStatus: 0,
